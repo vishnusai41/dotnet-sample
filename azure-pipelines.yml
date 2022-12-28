@@ -25,5 +25,5 @@ stages:
         targetType: 'inline'
         script: |          
           echo "Hello world"
-          echo "build number: ${{ parameters.buildnumber }}
+          echo "build number: ${{ parameters.buildnumber }}"
     
