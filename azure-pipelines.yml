@@ -1,44 +1,29 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+name : sample
+
 parameters:
-- name: build
+- name: 
   type: string
   default: null
-  values: 
-  - 1
-  - 2
+  values:
+  - one
+  - two
 
-name: sample
 trigger:
 - master
-- dev
 
-pool: sample
-
-variables:
-- group : 
+pool: 
+ vm_image: ubuntu-latest
 
 stages:
-- stage: build 
+- stage: printing_parameters
   jobs:
-  - job: gatheringdepen
+  - job: print
     steps:
-    - task: Maven@4
-      displayName: build using maven
-      inputs:
-        mavenPomFile: 'pom.xml'
-        publishJUnitResults: true
-        testResultsFiles: '**/surefire-reports/TEST-*.xml'
-        javaHomeOption: 'JDKVersion'
-        mavenVersionOption: 'Default'
-        mavenAuthenticateFeed: false
-        effectivePomSkip: false
-        sonarQubeRunAnalysis: false
     - task: Bash@3
+      displayName: bashtask
       inputs:
-        filePath: '/home/'
-    - script: |
-       echo $(branch)
-       
+        targetType: 'inline'
+        script: |          
+          echo "Hello world"
+          echo "build number: ${{buildnumber}}
+    
