@@ -12,7 +12,7 @@ trigger:
 - master
 
 pool: 
- vm_image: ubuntu-latest
+ vmImage: 'ubuntu-latest'
 
 stages:
 - stage: printing_parameters
