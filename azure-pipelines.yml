@@ -1,7 +1,7 @@
 name : sample
 
 parameters:
-- name: 
+- name: buildnumber
   type: string
   default: null
   values:
@@ -20,10 +20,10 @@ stages:
   - job: print
     steps:
     - task: Bash@3
-      displayName: bashtask
+      displayName: 
       inputs:
         targetType: 'inline'
         script: |          
           echo "Hello world"
-          echo "build number: ${{buildnumber}}
+          echo "build number: ${{ parameters.buildnumber }}
     
